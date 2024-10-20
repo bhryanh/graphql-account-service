@@ -1,6 +1,0 @@
-@graphql_account_service_HostAddress = http://localhost:5021
-
-GET {{graphql_account_service_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

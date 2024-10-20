@@ -14,6 +14,11 @@ namespace graphql_account_service.Application.Services
 
         public async Task<Account> CreateAccountAsync(string accountNumber, string customerId)
         {
+            if(await _accountRepository.GetAccountByNumberAsync(accountNumber) != null)
+            {
+                throw new Exception("Account number already exists");
+            }
+            
             var account = new Account { AccountNumber = accountNumber, CustomerId = customerId, Balance = 0 };
             await _accountRepository.AddAccountAsync(account);
             return account;
